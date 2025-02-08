@@ -1,0 +1,111 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello FirstController!{% endblock %}
+
+{% block body %}
+<style>
+    img {
+    width: 100%;
+    height: 100%;
+    }
+
+/* Logo */
+
+
+/* Contenu centré */
+.content {
+    position: absolute;
+    top: 50%;
+    left: 40%;
+    text-align: center;
+}
+
+.content h1 {
+    font-size: 50px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    color: white;
+    text-align: center;
+}
+
+.content hr {
+    width: 50px;
+    height: 2px;
+    background: #ffffff;
+    border: none;
+    margin: 10px auto;
+    text-align: center;
+}
+
+.content p {
+    font-size: 20px;
+    font-weight: 400;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.modal-header{
+    background: linear-gradient(-135deg, #eea98e, #e1633f);
+    text-align: center;
+    font-size: 25px;
+    color: #fff;
+}
+
+
+.input-group .btn {
+  position: relative;
+  z-index: 2;
+  height: auto;}
+
+.logo{
+    width: 100px;
+    height: 100px;
+}
+
+
+
+
+</style>
+
+
+<div class="background">
+<img src="/images/banner.jpg" alt="">
+  <!-- Contenu principal -->
+  <div class="content">
+      
+      <p id="signInButton" class="btn btn-danger text-light mx-2" data-bs-toggle="modal" data-bs-target="#exampleModal">Sign in</p>
+      <p id="signUpButton" class="btn btn-danger text-light" data-bs-toggle="modal" data-bs-target="#Modal">Sign up</p>
+
+      <!-- Sign In Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Login</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                      
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      <!-- Sign Up Modal -->
+      <div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <h5 class="modal-title" id="ModalLabel">Register</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                      
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+{% endblock %}

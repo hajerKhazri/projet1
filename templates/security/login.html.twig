@@ -1,0 +1,95 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+{% block header %}
+{% endblock %}
+{% block sidebar %}
+{% endblock %}
+{% block footer %}
+{% endblock %}
+{% block body %}
+<div class="bg-white">
+    <!-- begin app -->
+    <div class="app">
+        <!-- begin app-wrap -->
+        <div class="app-wrap">
+            <!-- begin pre-loader -->
+            <div class="loader">
+                <div class="h-100 d-flex justify-content-center">
+                    <div class="align-self-center">
+                        <img src="img/loader/loader.svg" alt="loader">
+                    </div>
+                </div>
+            </div>
+            <!-- end pre-loader -->
+
+            <!--start login contant-->
+            <div class="app-contant">
+                <div class="bg-white">
+                    <div class="container-fluid p-0">
+                        <div class="row no-gutters">
+                            <div class="col-sm-6 col-lg-5 col-xxl-4  align-self-center order-2 order-sm-1">
+                                <div class="d-flex align-items-center h-100-vh">
+                                    <div class="login p-50">
+                                        <h1 class="mb-2">We Are Mentor</h1>
+                                        <p>Welcome back, please login to your account.</p>
+                                        <form class="mt-5 mt-sm-5" method="post">
+                                        {% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    {% if app.user %}
+        <div class="mb-3">
+            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+        </div>
+    {% endif %}
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="form-group">
+                                                        <label class="control-label" for="inputEmail">Email*</label>
+                                                        <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" placeholder="Email" required autofocus>
+                                                        
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="form-group">
+                                                        <label class="control-label" for="inputPassword">Password*</label>
+                                                        <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" placeholder="Password" required>
+
+                                                    </div>
+                                                </div>
+                                                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                                                <div class="col-12 mt-3">
+                                                    <button class="btn btn-lg btn btn-primary text-uppercase" type="submit">Sign in</button>
+                                                </div>
+                                                <div class="col-12  mt-3">
+                                                    <p>Don't have an account ?<a href="{{ path('app_register') }}"> Sign Up</a></p><p><a href="{{ path('app_forgot_password_request') }}">Mot de passe oblier</a></p>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-xxl-8 col-lg-7 o-hidden order-1 order-sm-2 bg-light">
+                                <div class="row align-items-center h-100">
+                                    <div class="col-7 mx-auto ">
+                                        <img class="img-fluid" src="img/bg/login1.svg" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--end login contant-->
+        </div>
+        <!-- end app-wrap -->
+    </div>
+    <!-- end app -->
+
+
+
+    <!-- plugins -->
+   
+</div>
+{% endblock %}
