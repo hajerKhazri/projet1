@@ -163,8 +163,16 @@ class ResetPasswordController extends AbstractController
             ->htmlTemplate('reset_password/email.html.twig')
             ->context([
                 'resetToken' => $resetToken,
+                'firstName' => $user->getFirstName(), // Assurez-vous que la méthode existe
+                'lastName' => $user->getLastName(),   // Assurez-vous que la méthode existe
+
             ])
-            ->embedFromPath('public/images/image-1.png', 'logo_image')
+            ->embedFromPath('public/images/logo1.png', 'imagelogo')
+            ->embedFromPath('public/images/image-1.png', 'image1')
+            ->embedFromPath('public/images/image-2.png', 'image2')
+            ->embedFromPath('public/images/image-3.png', 'image3')
+            ->embedFromPath('public/images/image-4.png', 'image4')
+            ->embedFromPath('public/images/image-5.png', 'image5')
         ;
 
         $mailer->send($email);
