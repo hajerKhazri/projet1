@@ -3,40 +3,39 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!-- Bootstrap CSS --> 
-        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assetsP/css/bootstrap.min.css">
         <!-- Animate CSS --> 
-        <link rel="stylesheet" href="assets/css/animate.min.css">
+        <link rel="stylesheet" href="assetsP/css/animate.min.css">
         <!-- Meanmenu CSS -->
-        <link rel="stylesheet" href="assets/css/meanmenu.css">
+        <link rel="stylesheet" href="assetsP/css/meanmenu.css">
         <!-- Boxicons CSS -->
-        <link rel="stylesheet" href="assets/css/boxicons.min.css">
+        <link rel="stylesheet" href="assetsP/css/boxicons.min.css">
         <!-- Flaticon CSS -->
-        <link rel="stylesheet" href="assets/css/flaticon.css">
+        <link rel="stylesheet" href="assetsP/css/flaticon.css">
         <!-- Odometer CSS -->
-        <link rel="stylesheet" href="assets/css/odometer.min.css">
+        <link rel="stylesheet" href="assetsP/css/odometer.min.css">
         <!-- Slick Min CSS -->
-        <link rel="stylesheet" href="assets/css/slick.min.css">
+        <link rel="stylesheet" href="assetsP/css/slick.min.css">
         <!-- Nice Select CSS -->
-        <link rel="stylesheet" href="assets/css/nice-select.min.css">
+        <link rel="stylesheet" href="assetsP/css/nice-select.min.css">
         <!-- Carousel CSS -->
-        <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+        <link rel="stylesheet" href="assetsP/css/owl.carousel.min.css">
         <!-- Carousel Default CSS -->
-        <link rel="stylesheet" href="assets/css/owl.theme.default.min.css">
+        <link rel="stylesheet" href="assetsP/css/owl.theme.default.min.css">
         <!-- Magnific Popup CSS -->
-        <link rel="stylesheet" href="assets/css/magnific-popup.min.css">
+        <link rel="stylesheet" href="assetsP/css/magnific-popup.min.css">
         <!-- Fancybox CSS -->
-        <link rel="stylesheet" href="assets/css/fancybox.min.css">
+        <link rel="stylesheet" href="assetsP/css/fancybox.min.css">
         <!-- Style CSS -->
-        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assetsP/css/style.css">
         <!-- Dark CSS -->
-        <link rel="stylesheet" href="assets/css/dark.css">
+        <link rel="stylesheet" href="assetsP/css/dark.css">
         <!-- Responsive CSS -->
-		<link rel="stylesheet" href="assets/css/responsive.css">
-        <link rel="icon" type="image/png" href="assets/images/favicon.png">
+		<link rel="stylesheet" href="assetsP/css/responsive.css">
+        <link rel="icon" type="image/png" href="assetsP/images/favicon.png">
         {% block stylesheets %}
         {% endblock %}
 
@@ -52,8 +51,8 @@
                     <div class="main-responsive-menu">
                         <div class="logo">
                             <a href="index.html">
-                                <img src="assets/images/logo.png" class="black-logo" alt="image">
-                                <img src="assets/images/logo-2.png" class="white-logo" alt="image">
+                                <img src="assetsP/images/logo.png" class="black-logo" alt="image">
+                                <img src="assetsP/images/logo-2.png" class="white-logo" alt="image">
                             </a>
                         </div>
                     </div>
@@ -64,8 +63,8 @@
                 <div class="container">
                     <nav class="navbar navbar-expand-md navbar-light">
                         <a class="navbar-brand" href="index.html">
-                            <img src="assets/images/logo.png" class="black-logo" alt="image">
-                            <img src="assets/images/logo-2.png" class="white-logo" alt="image">
+                            <img src="assetsP/images/logo.png" class="black-logo" alt="image">
+                            <img src="assetsP/images/logo-2.png" class="white-logo" alt="image">
                         </a>
 
                         <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
@@ -295,30 +294,7 @@
                                     </ul>
                                 </li>
 
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        Blog 
-                                        <i class='bx bx-caret-down'></i>
-                                    </a>
-
-                                    <ul class="dropdown-menu">
-                                        <li class="nav-item">
-                                            <a href="blog-1.html" class="nav-link">Blog (2 in Row)</a>
-                                        </li>
-
-                                        <li class="nav-item">
-                                            <a href="blog-2.html" class="nav-link">Blog (3 in Row)</a>
-                                        </li>
-
-                                        <li class="nav-item">
-                                            <a href="blog-3.html" class="nav-link">Blog (Full Width)</a>
-                                        </li>
-
-                                        <li class="nav-item">
-                                            <a href="blog-details.html" class="nav-link">Blog Details</a>
-                                        </li>
-                                    </ul>
-                                </li>
+                                
     
                                 <li class="nav-item">
                                     <a href="contact.html" class="nav-link">Contact</a>
@@ -340,12 +316,34 @@
                                         <i class='flaticon-search'></i>
                                     </div>
                                 </div>
-                                
+                                {% if not app.user %}
                                 <div class="option-item">
                                     <div class="navbar-btn">
-                                        <a href="online-booking.html" class="default-btn">Book Online <i class="flaticon-pointer"></i></a>
+                                        <a href="{{ path('app_login') }}" class="default-btn">Login <i class="flaticon-pointer"></i></a>
                                     </div>
                                 </div>
+                                {% endif %}
+                               {% if not app.user %}
+                                <div class="option-item">
+                                    <div class="navbar-btn">
+                                        <a href="{{ path('app_register') }}" class="default-btn">Register <i class="flaticon-pointer"></i></a>
+                                    </div>
+                                </div>
+                                {% endif %}
+                               {% if app.user %}
+                                <div class="option-item">
+                                    <div class="navbar-btn">
+                                        <a href="#" class="default-btn">My account <i class="flaticon-pointer"></i></a>
+                                    </div>
+                                </div>
+                                {% endif %}
+                               {% if app.user %}
+                                <div class="option-item">
+                                    <div class="navbar-btn">
+                                        <a href="#" class="default-btn">Book Online <i class="flaticon-pointer"></i></a>
+                                    </div>
+                                </div>
+                                {% endif %}
                             </div>
                         </div>
                     </nav>
@@ -365,6 +363,7 @@
                     <div class="container">
                         <div class="option-inner">
                             <div class="others-options d-flex align-items-center">
+                                {% if app.user %}
                                 <div class="option-item">
                                     <div class="cart-btn">
                                         <a href="cart.html">
@@ -373,7 +372,7 @@
                                         </a>
                                     </div>
                                 </div>
-
+                                {% endif %}
                                 <div class="option-item">
                                     <div class="search-box">
                                         <i class='flaticon-search'></i>
@@ -400,7 +399,7 @@
                     <div class="col-lg-3 col-sm-6">
                         <div class="single-footer-widget">
                             <div class="widget-logo">
-                                <a href="index.html"><img src="assets/images/logo-2.png" alt="image"></a>
+                                <a href="index.html"><img src="assetsP/images/logo-2.png" alt="image"></a>
                             </div>
                             <p>Lorem ipsum dolor sit amet consetetur sadipscing elitr sed diam nonumy eir mod tempor invidunt ut labore et.</p>
 
@@ -521,34 +520,34 @@
             <i class='flaticon-up-arrow'></i>
          </div>
         {% endblock %}
-        <script data-cfasync="false" src="assets/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/jquery.min.js"></script>
+        <script data-cfasync="false" src="assetsP/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assetsP/js/jquery.min.js"></script>
         <!-- Bootstrap Bundle JS -->
-        <script src="assets/js/bootstrap.bundle.min.js"></script>
+        <script src="assetsP/js/bootstrap.bundle.min.js"></script>
         <!-- Meanmenu JS -->
-        <script src="assets/js/jquery.meanmenu.js"></script>
+        <script src="assetsP/js/jquery.meanmenu.js"></script>
         <!-- Owl Carousel JS -->
-        <script src="assets/js/owl.carousel.min.js"></script>
+        <script src="assetsP/js/owl.carousel.min.js"></script>
         <!-- Jquery Appear JS -->
-        <script src="assets/js/jquery.appear.js"></script>
+        <script src="assetsP/js/jquery.appear.js"></script>
         <!-- Odometer JS -->
-        <script src="assets/js/odometer.min.js"></script>
+        <script src="assetsP/js/odometer.min.js"></script>
         <!-- Slick Min JS -->
-        <script src="assets/js/slick.min.js"></script>
+        <script src="assetsP/js/slick.min.js"></script>
         <!-- Nice Select JS -->
-        <script src="assets/js/nice-select.min.js"></script>
+        <script src="assetsP/js/nice-select.min.js"></script>
         <!-- Magnific Popup JS -->
-        <script src="assets/js/jquery.magnific-popup.min.js"></script>
+        <script src="assetsP/js/jquery.magnific-popup.min.js"></script>
         <!-- Fancybox JS -->
-        <script src="assets/js/fancybox.min.js"></script>
+        <script src="assetsP/js/fancybox.min.js"></script>
         <!-- Ajaxchimp JS -->
-		<script src="assets/js/jquery.ajaxchimp.min.js"></script>
+		<script src="assetsP/js/jquery.ajaxchimp.min.js"></script>
 		<!-- Form Validator JS -->
-		<script src="assets/js/form-validator.min.js"></script>
+		<script src="assetsP/js/form-validator.min.js"></script>
 		<!-- Contact JS -->
-        <script src="assets/js/contact-form-script.js"></script>
+        <script src="assetsP/js/contact-form-script.js"></script>
         <!-- Wow JS -->
-        <script src="assets/js/wow.min.js"></script>
+        <script src="assetsP/js/wow.min.js"></script>
         <!-- Custom JS -->
-        <script src="assets/js/main.js"></script>
+        <script src="assetsP/js/main.js"></script>
     </body>
 </html>

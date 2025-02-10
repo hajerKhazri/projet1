@@ -450,17 +450,18 @@
         <ul class="metismenu " id="sidebarNav">
             <li class="nav-static-title">Personal</li>
             <li>
-                <a href="home" aria-expanded="false">
+                <a href="admin" aria-expanded="false">
                     <i class="nav-icon ti ti-home"></i>
                     <span class="nav-title">Tableau de bord</span>
     
                 </a>
             </li>
+            <li><a href="listclient" aria-expanded="false"><i class="bi bi-calendar-check"></i><span class="nav-title">Rendez-vous</span></a> </li>
             <li><a class="has-arrow" href="javascript:void(0)" aria-expanded="false">
             <i class="nav-icon ti ti-user"></i>
             <span class="nav-title">Administrateur</span></a>
                 <ul aria-expanded="false">
-                    <li *ngIf="(role === 'Super-Admin')||(role === 'Admin')"> 
+                    <li> 
                         <a href='ajouterAdmin'>Ajouter Administrateurs</a> </li>
                     <li> <a href='listAdmin'>List d'Administrateurs</a> </li>
                         </ul>
@@ -469,6 +470,7 @@
                 <a class="has-arrow" href="javascript:void(0)" aria-expanded="false"><i class="bi bi-people"></i><span class="nav-title">Fournisseur</span> </a>
                 <ul aria-expanded="false">
                     <li> <a href="listfournisseur">List Fournisseur</a> </li>
+                    <li> <a href='listAdmin'>List Fournisseur</a> </li>
                 </ul>
             </li>
             
@@ -482,20 +484,10 @@
             <li><a href="listclient" aria-expanded="false"><i class="bi bi-people"></i><span class="nav-title">Client</span></a> </li>
             <li><a href="listproduit" aria-expanded="false"><i class="bi bi-shop"></i><span class="nav-title">Produit</span></a> </li>
             <li>
-                <a class="has-arrow" href="javascript:void(0)" aria-expanded="false"><i class="bi bi-list"></i><span class="nav-title">Categorie</span> </a>
-                <ul aria-expanded="false">
-                    <li> <a href="listcategorie">List de Categories</a> </li>
-                    <li> <a href="ajoutercategorie"> Ajouter Categorie</a> </li>
-                </ul>
-            </li>
-            <li>
                 <a href="listcolis" aria-expanded="false"><i class="bi bi-box"></i> <span class="nav-title">Colis</span></a>
             </li>
-            <li><a href="affcom" aria-expanded="false"><i class="bi bi-command"></i><span class="nav-title">Commandes</span></a> </li>
-
-            
-            <li><a href="listcontact" aria-expanded="false"><i class="nav-icon ti ti-email"></i><span class="nav-title">Messages</span></a> </li>
-           
+            <li><a href="affcom" aria-expanded="false"><i class="bi bi-command"></i><span class="nav-title">Commandes</span></a></li>           
+            <li><a href="listcontact" aria-expanded="false"><i class="nav-icon ti ti-email"></i><span class="nav-title">Reclamation</span></a></li>        
         </ul>
     </div>
     <!-- end sidebar-nav -->
