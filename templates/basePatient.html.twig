@@ -1,49 +1,49 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!-- Bootstrap CSS --> 
-        <link rel="stylesheet" href="assetsP/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{{ asset('assetsP/css/bootstrap.min.css') }}">
         <!-- Animate CSS --> 
-        <link rel="stylesheet" href="assetsP/css/animate.min.css">
+        <link rel="stylesheet" href="{{ asset('assetsP/css/animate.min.css') }}">
         <!-- Meanmenu CSS -->
-        <link rel="stylesheet" href="assetsP/css/meanmenu.css">
+        <link rel="stylesheet" href="{{ asset('assetsP/css/meanmenu.css') }}">
         <!-- Boxicons CSS -->
-        <link rel="stylesheet" href="assetsP/css/boxicons.min.css">
+        <link rel="stylesheet" href="{{ asset('assetsP/css/boxicons.min.css') }}">
         <!-- Flaticon CSS -->
-        <link rel="stylesheet" href="assetsP/css/flaticon.css">
+        <link rel="stylesheet" href="{{ asset('assetsP/css/flaticon.css') }}">
         <!-- Odometer CSS -->
-        <link rel="stylesheet" href="assetsP/css/odometer.min.css">
+        <link rel="stylesheet" href="{{ asset('assetsP/css/odometer.min.css') }}">
         <!-- Slick Min CSS -->
-        <link rel="stylesheet" href="assetsP/css/slick.min.css">
+        <link rel="stylesheet" href="{{ asset('assetsP/css/slick.min.css') }}">
         <!-- Nice Select CSS -->
-        <link rel="stylesheet" href="assetsP/css/nice-select.min.css">
+        <link rel="stylesheet" href="{{ asset('assetsP/css/nice-select.min.css') }}">
         <!-- Carousel CSS -->
-        <link rel="stylesheet" href="assetsP/css/owl.carousel.min.css">
+        <link rel="stylesheet" href="{{ asset('assetsP/css/owl.carousel.min.css') }}">
         <!-- Carousel Default CSS -->
-        <link rel="stylesheet" href="assetsP/css/owl.theme.default.min.css">
+        <link rel="stylesheet" href="{{ asset('assetsP/css/owl.theme.default.min.css') }}">
         <!-- Magnific Popup CSS -->
-        <link rel="stylesheet" href="assetsP/css/magnific-popup.min.css">
+        <link rel="stylesheet" href="{{ asset('assetsP/css/magnific-popup.min.css') }}">
         <!-- Fancybox CSS -->
-        <link rel="stylesheet" href="assetsP/css/fancybox.min.css">
+        <link rel="stylesheet" href="{{ asset('assetsP/css/fancybox.min.css') }}">
         <!-- Style CSS -->
-        <link rel="stylesheet" href="assetsP/css/style.css">
+        <link rel="stylesheet" href="{{ asset('assetsP/css/style.css') }}">
         <!-- Dark CSS -->
-        <link rel="stylesheet" href="assetsP/css/dark.css">
+        <link rel="stylesheet" href="{{ asset('assetsP/css/dark.css') }}">
         <!-- Responsive CSS -->
-		<link rel="stylesheet" href="assetsP/css/responsive.css">
-        <link rel="icon" type="image/png" href="assetsP/images/favicon.png">
+		<link rel="stylesheet" href="{{ asset('assetsP/css/responsive.css') }}">
+        <link rel="icon" type="image/png" href="{{ asset('assetsP/images/favicon.png') }}">
         {% block stylesheets %}
         {% endblock %}
 
         {% block javascripts %}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
+          {% block importmap %}{{ importmap('app') }}{% endblock %}
         {% endblock %}
     </head>
     <body>
+    
         {% block header %}
          <div class="navbar-area">
             <div class="main-responsive-nav">
@@ -51,8 +51,8 @@
                     <div class="main-responsive-menu">
                         <div class="logo">
                             <a href="index.html">
-                                <img src="assetsP/images/logo.png" class="black-logo" alt="image">
-                                <img src="assetsP/images/logo-2.png" class="white-logo" alt="image">
+                                <img src="{{ asset('assetsP/images/logo.png')}}" class="black-logo" alt="image">
+                                <img src="{{ asset('assetsP/images/logo-2.png')}}" class="white-logo" alt="image">
                             </a>
                         </div>
                     </div>
@@ -63,8 +63,8 @@
                 <div class="container">
                     <nav class="navbar navbar-expand-md navbar-light">
                         <a class="navbar-brand" href="index.html">
-                            <img src="assetsP/images/logo.png" class="black-logo" alt="image">
-                            <img src="assetsP/images/logo-2.png" class="white-logo" alt="image">
+                            <img src="{{ asset('assetsP/images/logo.png')}}" class="black-logo" alt="image">
+                            <img src="{{ asset('assetsP/images/logo-2.png')}}" class="white-logo" alt="image">
                         </a>
 
                         <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
@@ -399,7 +399,7 @@
                     <div class="col-lg-3 col-sm-6">
                         <div class="single-footer-widget">
                             <div class="widget-logo">
-                                <a href="index.html"><img src="assetsP/images/logo-2.png" alt="image"></a>
+                                <a href="index.html"><img src="{{ asset('assetsP/images/logo-2.png')}}" alt="image"></a>
                             </div>
                             <p>Lorem ipsum dolor sit amet consetetur sadipscing elitr sed diam nonumy eir mod tempor invidunt ut labore et.</p>
 
@@ -520,34 +520,34 @@
             <i class='flaticon-up-arrow'></i>
          </div>
         {% endblock %}
-        <script data-cfasync="false" src="assetsP/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assetsP/js/jquery.min.js"></script>
+        <script data-cfasync="false" src="{{ asset('assetsP/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js')}}"></script><script src="{{ asset('assetsP/js/jquery.min.js')}}"></script>
         <!-- Bootstrap Bundle JS -->
-        <script src="assetsP/js/bootstrap.bundle.min.js"></script>
+        <script src="{{ asset('assetsP/js/bootstrap.bundle.min.js')}}"></script>
         <!-- Meanmenu JS -->
-        <script src="assetsP/js/jquery.meanmenu.js"></script>
+        <script src="{{ asset('assetsP/js/jquery.meanmenu.js')}}"></script>
         <!-- Owl Carousel JS -->
-        <script src="assetsP/js/owl.carousel.min.js"></script>
+        <script src="{{ asset('assetsP/js/owl.carousel.min.js')}}"></script>
         <!-- Jquery Appear JS -->
-        <script src="assetsP/js/jquery.appear.js"></script>
+        <script src="{{ asset('assetsP/js/jquery.appear.js')}}"></script>
         <!-- Odometer JS -->
-        <script src="assetsP/js/odometer.min.js"></script>
+        <script src="{{ asset('assetsP/js/odometer.min.js')}}"></script>
         <!-- Slick Min JS -->
-        <script src="assetsP/js/slick.min.js"></script>
+        <script src="{{ asset('assetsP/js/slick.min.js')}}"></script>
         <!-- Nice Select JS -->
-        <script src="assetsP/js/nice-select.min.js"></script>
+        <script src="{{ asset('assetsP/js/nice-select.min.js')}}"></script>
         <!-- Magnific Popup JS -->
-        <script src="assetsP/js/jquery.magnific-popup.min.js"></script>
+        <script src="{{ asset('assetsP/js/jquery.magnific-popup.min.js')}}"></script>
         <!-- Fancybox JS -->
-        <script src="assetsP/js/fancybox.min.js"></script>
+        <script src="{{ asset('assetsP/js/fancybox.min.js')}}"></script>
         <!-- Ajaxchimp JS -->
-		<script src="assetsP/js/jquery.ajaxchimp.min.js"></script>
+		<script src="{{ asset('assetsP/js/jquery.ajaxchimp.min.js')}}"></script>
 		<!-- Form Validator JS -->
-		<script src="assetsP/js/form-validator.min.js"></script>
+		<script src="{{ asset('assetsP/js/form-validator.min.js')}}"></script>
 		<!-- Contact JS -->
-        <script src="assetsP/js/contact-form-script.js"></script>
+        <script src="{{ asset('assetsP/js/contact-form-script.js')}}"></script>
         <!-- Wow JS -->
-        <script src="assetsP/js/wow.min.js"></script>
+        <script src="{{ asset('assetsP/js/wow.min.js')}}"></script>
         <!-- Custom JS -->
-        <script src="assetsP/js/main.js"></script>
+        <script src="{{ asset('assetsP/js/main.js')}}"></script>
     </body>
 </html>
