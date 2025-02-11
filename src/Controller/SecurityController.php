@@ -22,6 +22,12 @@ class SecurityController extends AbstractController
             if ($this->isGranted('ROLE_PSYCHIATRE')) {
                 return $this->redirectToRoute('app_psychiatre'); // Redirection vers l'admin
             }
+<<<<<<< HEAD
+=======
+            if ($this->isGranted('ROLE_PATIENT')) {
+                return $this->redirectToRoute('app_home'); // Redirection vers l'admin
+            }
+>>>>>>> f363561ac0fd018884919ad594c72da0d1a28970
              return $this->redirectToRoute('app_home');
          }
 

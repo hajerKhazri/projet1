@@ -37,7 +37,10 @@ class RegistrationFormType extends AbstractType
                 ],
                 'expanded' => false,
                 'multiple' => true, // Symfony attend un tableau pour les rôles
+<<<<<<< HEAD
 
+=======
+>>>>>>> f363561ac0fd018884919ad594c72da0d1a28970
             ])
             ->add('plainPassword', PasswordType::class, [
                 // instead of being set onto the object directly,
