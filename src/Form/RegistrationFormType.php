@@ -36,7 +36,7 @@ class RegistrationFormType extends AbstractType
                     'Fournisseur' => 'ROLE_FOURNISSEUR',
                 ],
                 'expanded' => false,
-                'multiple' => false, // Symfony attend un tableau pour les rôles
+                'multiple' => true, // Symfony attend un tableau pour les rôles
             ])
             ->add('plainPassword', PasswordType::class, [
                 // instead of being set onto the object directly,
