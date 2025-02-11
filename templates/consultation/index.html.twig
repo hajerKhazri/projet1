@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Consultation index{% endblock %}
+
+{% block body %}
+    <h1>Consultation index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Heure</th>
+                <th>Status</th>
+                <th>Traitement</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for consultation in consultations %}
+            <tr>
+                <td>{{ consultation.date ? consultation.date|date('Y-m-d') : '' }}</td>
+                <td></td>
+                <td></td>
+                <td>{{ consultation.traitement }}</td>
+                <td>
+                    <a href="{{ path('app_consultation_show', {'id': consultation.id}) }}">show</a>
+                    <a href="{{ path('app_consultation_edit', {'id': consultation.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+
+
+
+    <div class="row editable-wrapper">
+                            <div class="col-lg-12 ">
+                                <div class="card card-statistics">
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table id="tableedit" class="table display responsive nowrap table-light table-bordered">
+                                                <thead class="thead-light">
+                                                    <tr>
+                <th>Date</th>
+                <th>Heure</th>
+                <th>Status</th>
+                <th>Traitement</th>
+                <th>actions</th>
+                                                    <th class="tabledit-toolbar-column"></th></tr>
+                                                </thead>
+                                                <tbody>
+                                                        {% for consultation in consultations %}
+
+                                                    <tr id="Garrett Winters">
+                                                        <td><span class="tabledit-span tabledit-identifier">{{ consultation.date ? consultation.date|date('Y-m-d') : '' }}</span><input class="tabledit-input tabledit-identifier" type="hidden" name="id" value="Garrett Winters" disabled=""></td>
+                                                        <td class="tabledit-view-mode"><span class="tabledit-span">{{ consultation.heure ? consultation.heure|date('H:i:s') : '' }}</span><input class="tabledit-input form-control input-sm" type="text" name="car" value="System Architect" style="display: none;" disabled=""></td>
+                                                        <td class="tabledit-view-mode"><span class="tabledit-span">{{ consultation.status }}</span><input class="tabledit-input form-control input-sm" type="text" name="color" value="Edinburgh" style="display: none;" disabled=""></td>
+                                                        <td>61</td>
+                                                        <td>2011/04/25</td>
+                                                        <td>$320,800</td>
+                                                    <td style="white-space: nowrap; width: 1%;"><div class="tabledit-toolbar btn-toolbar" style="text-align: left;">
+                                           <div class="btn-group btn-group-sm" style="float: none;"><button type="button" class="tabledit-edit-button btn btn-sm btn-primary" style="float: none;"><span class="fa fa-pencil"></span> &nbsp; EDIT</button></div>
+                                           
+                                           </td>
+                                           </tr>
+                                             {% endfor %}
+
+                                                </tbody>
+
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+    <a href="{{ path('app_consultation_new') }}">Create new</a>
+{% endblock %}
