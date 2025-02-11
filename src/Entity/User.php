@@ -18,6 +18,8 @@ use Symfony\Component\Security\Core\User\UserInterface;
     'user' => User::class,
     'patient' => Patient::class,
     'psychiatre' => Psychiatre::class,
+    'fournisseur' => Fournisseur::class,
+
 ])]
 abstract class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
