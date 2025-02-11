@@ -25,7 +25,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @var list<string> The user roles
      */
-    #[ORM\Column]
+    #[ORM\Column(type: "json")]
     private array $roles = [];
 
     /**
@@ -75,19 +75,24 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function getRoles(): array
     {
         $roles = $this->roles;
-        // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
-
+        $roles[] = 'ROLE_USER'; // Garantir que chaque utilisateur a au moins ROLE_USER
         return array_unique($roles);
     }
 
-    /**
-     * @param list<string> $roles
-     */
-    public function setRoles(array $roles): static
+    public function setRoles(array|string $roles): self
     {
-        $this->roles = $roles;
+        if (is_string($roles)) {
+            $roles = json_decode($roles, true) ?? [$roles];
+        }
 
+        $validRoles = ['ROLE_ADMIN', 'ROLE_PATIENT', 'ROLE_PSYCHIATRE', 'ROLE_FOURNISSEUR'];
+        foreach ($roles as $role) {
+            if (!in_array($role, $validRoles, true)) {
+                throw new \InvalidArgumentException("Rôle invalide : $role");
+            }
+        }
+
+        $this->roles = $roles;
         return $this;
     }
 

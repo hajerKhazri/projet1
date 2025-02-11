@@ -11,6 +11,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class RegistrationFormType extends AbstractType
 {
@@ -28,6 +29,15 @@ class RegistrationFormType extends AbstractType
             ])
             ->add('firstName')
             ->add('lastName')
+            ->add('roles', ChoiceType::class, [
+                'choices' => [
+                    'Patient' => 'ROLE_PATIENT',
+                    'Psychiatre' => 'ROLE_PSYCHIATRE',
+                    'Fournisseur' => 'ROLE_FOURNISSEUR',
+                ],
+                'expanded' => false,
+                'multiple' => false, // Symfony attend un tableau pour les rôles
+            ])
             ->add('plainPassword', PasswordType::class, [
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
