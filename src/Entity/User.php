@@ -9,10 +9,17 @@ use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
-#[ORM\Table(name: '`user`')]
+#[ORM\Table(name: 'user')]
 #[ORM\UniqueConstraint(name: 'UNIQ_IDENTIFIER_EMAIL', fields: ['email'])]
 #[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
-class User implements UserInterface, PasswordAuthenticatedUserInterface
+#[ORM\InheritanceType('JOINED')] // Stratégie d'héritage "JOINED"
+#[ORM\DiscriminatorColumn(name: 'discr', type: 'string')] // Colonne discriminatrice
+#[ORM\DiscriminatorMap([
+    'user' => User::class,
+    'patient' => Patient::class,
+    'psychiatre' => Psychiatre::class,
+])]
+abstract class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
