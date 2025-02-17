@@ -7,6 +7,10 @@ use App\Entity\Psychiatre;
 use App\Entity\Patient;
 use App\Entity\Fournisseur;
 use App\Form\RegistrationFormType;
+use App\Form\FournisseurType;
+use App\Form\PatientType;
+use App\Form\PsychiatreType;
+
 use App\Security\SecurityAuthenticator;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -115,6 +119,4 @@ class RegistrationController extends AbstractController
             'agreeTerms' => $form->get('agreeTerms')->createView(),
         ]);
     }
-
-    
 }

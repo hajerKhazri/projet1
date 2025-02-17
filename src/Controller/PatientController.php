@@ -10,7 +10,7 @@ final class PatientController extends AbstractController{
     #[Route('/patient', name: 'app_patient')]
     public function index(): Response
     {
-        return $this->render('patient/index.html.twig', [
+        return $this->render('home/index.html.twig', [
             'controller_name' => 'PatientController',
         ]);
     }

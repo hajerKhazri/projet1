@@ -1,0 +1,116 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des produits{% endblock %}
+
+{% block body %}
+    <!-- begin app -->
+    <div class="app">
+        <!-- begin app-wrap -->
+        <div class="app-wrap">
+            <!-- begin pre-loader -->
+            <div class="loader">
+                <div class="h-100 d-flex justify-content-center">
+                    <div class="align-self-center">
+                        <img src="assets/img/loader/loader.svg" alt="loader">
+                    </div>
+                </div>
+            </div>
+            <!-- end pre-loader -->
+            <!-- begin app-header -->
+            <header></header>
+            <!-- end app-header -->
+            <!-- begin app-container -->
+            <div class="app-container">
+                <!-- begin app-navbar -->
+                <!-- end app-navbar -->
+                <!-- begin app-main -->
+                <div class="app-main" id="main">
+                    <!-- begin container-fluid -->
+                    <div class="container-fluid">
+                        <!-- begin row -->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <!-- begin page title -->
+                                <div class="d-block d-lg-flex flex-nowrap align-items-center" style="margin-bottom: 10px;">
+                                    <div class="page-title mr-2 pr-2 border-right">
+                                        <h1 style="font-size: 1.5rem;">Tableau de bord</h1>
+                                    </div>
+                                    <div class="breadcrumb-bar align-items-center" style="margin-left: 10px;">
+                                        <nav>
+                                            <ol class="breadcrumb p-0 m-0">
+                                                <li class="breadcrumb-item">
+                                                    <a href="index.html"><i class="ti ti-home"></i></a>
+                                                </li>
+                                                <li class="breadcrumb-item">
+                                                    Liste des produits
+                                                </li>
+                                                <li class="breadcrumb-item active text-primary" aria-current="page">Default</li>
+                                            </ol>
+                                        </nav>
+                                    </div>
+                                </div>
+                                <!-- end page title -->
+                            </div>
+                        </div>
+                        
+                        <!-- begin row -->
+                        <div class="row">
+                            <div class="col-12">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Nom</th>
+                                            <th>Description</th>
+                                            <th>Prix</th>
+                                            <th>Disponible</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for produit in produits %}
+                                            <tr>
+                                                <td>{{ produit.id }}</td>
+                                                <td>{{ produit.nom }}</td>
+                                                <td>{{ produit.description }}</td>
+                                                <td>{{ produit.prix }}</td>
+                                                <td>{{ produit.disponible ? 'Oui' : 'Non' }}</td>
+                                                <td>
+                                                    <a href="{{ path('produit_show', {'id': produit.id}) }}" class="btn btn-info btn-sm">Voir</a>
+                                                    <a href="{{ path('produit_edit', {'id': produit.id}) }}" class="btn btn-warning btn-sm">Éditer</a>
+                                                    <form method="post" action="{{ path('produit_delete', {'id': produit.id}) }}" style="display:inline;" onsubmit="return confirm('Voulez-vous vraiment supprimer ce produit ?');">
+                                                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ produit.id) }}">
+                                                        <button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        {% else %}
+                                            <tr>
+                                                <td colspan="6">Aucun enregistrement trouvé</td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+
+                                <a href="{{ path('produit_new') }}" class="btn btn-primary">Créer un produit</a>
+                            </div>
+                        </div>
+                        <!-- end row -->
+                        <!-- event Modal -->
+                        
+                    </div>
+                    <!-- end container-fluid -->
+                </div>
+                <!-- end app-main -->
+            </div>
+            <!-- end app-container -->
+            <!-- begin footer -->
+            <footer></footer>
+            <!-- end footer -->
+        </div>
+        <!-- end app-wrap -->
+    </div>
+    <!-- end app -->
+
+    <!-- plugins -->
+{% endblock %}

@@ -47,7 +47,7 @@
                     <div class="navbar-header d-flex align-items-center" id="bglogo">
                         <a href="javascript:void:(0)" class="mobile-toggle"><i class="ti ti-align-right"></i></a>
                         <a class="navbar-brand" href="index.html">
-                            <img src="{{ asset('assets/img/logo11.png')}}" class="img-fluid logo-desktop mx-4" alt="logo" />
+                            <img src="{{ asset('assets/img/logo11.png')}}" class="img-fluid logo-desktop " alt="logo" />
                             <img src="{{ asset('assets/img/logo-icon.png')}}" class="img-fluid logo-mobile" alt="logo" />
                         </a>
                     </div>
@@ -70,7 +70,7 @@
                                     </a>
                                     <div class="dropdown-menu mega-menu animated fadeIn" aria-labelledby="navbarDropdown">
                                         <div class="row no-gutters">
-                                            <div class="col-sm-2 p-20">
+                                            <div class="col">
                                                 <h4>UI Kit</h4>
                                                 <ul>
                                                     <li class="nav-link">
@@ -135,7 +135,7 @@
                                                     </li>
                                                 </ul>
                                             </div>
-                                            <div class="col-sm-4 p-20">
+                                            <div class="col-sm-4 p-10">
                                                 <h4>Contact Us</h4>
                                                 <div>
                                                     <form>
@@ -146,7 +146,7 @@
                                                             <input type="email" class="form-control" id="Email1" placeholder="Enter Email">
                                                         </div>
                                                         <div class="form-group">
-                                                            <textarea class="form-control" placeholder="Message" id="Textarea1" rows="3"></textarea>
+                                                            <textarea class="form-control" placeholder="Message" id="Textarea1" rows="1"></textarea>
                                                         </div>
                                                         <button type="submit" class="btn btn-primary text-uppercase">Submit</button>
                                                     </form>
@@ -154,10 +154,10 @@
                                             </div>
                                             <div class="col-sm-4">
                                                 <div class="chart-wrap">
-                                                    <div class="p-20">
+                                                    <div class="p-5">
                                                         <h4 class="mb-1">Page Views</h4>
                                                         <p>Daily page visitors</p>
-                                                        <h2 class="text-primary font-xxl mt-2">80+</h2>
+                                                        <h2 class="text-primary font-xxl "></h2>
                                                     </div>
                                                     <div class="apexchart-wrapper">
                                                         <div id="pageview"></div>
@@ -278,7 +278,7 @@
                                                 </ul>
                                             </li>
                                             <li class="dropdown-footer">
-                                                <a class="font-13" href="javascript:void(0)"> View All messages </a>
+                                                <a class="font-3" href="javascript:void(0)"> View All messages </a>
                                             </li>
                                         </ul>
                                     </div>
@@ -297,7 +297,7 @@
                                                 <a href="#" class="float-right btn btn-square btn-inverse-light btn-xs m-0">
                                                     <span class="font-13"> Clear all</span></a>
                                             </li>
-                                            <li class="dropdown-body min-h-240 nicescroll">
+                                            <li class="dropdown-body min-h-24 nicescroll">
                                                 <ul class="scrollbar scroll_dark max-h-240">
                                                     <li>
                                                         <a href="javascript:void(0)">
@@ -429,17 +429,17 @@
                                             </a>
                                             <a class="dropdown-item d-flex nav-link" href="javascript:void(0)">
                                                 <i class="fa fa-compass pr-2 text-warning"></i> Need help?</a>
-                                            <div class="row mt-2">
+                                            <div class="row ">
                                                 <div class="col">
                                                     <a class="bg-light p-3 text-center d-block" href="#">
                                                         <i class="fe fe-mail font-20 text-primary"></i>
-                                                        <span class="d-block font-13 mt-2">My messages</span>
+                                                        <span class="d-block font-13 ">My messages</span>
                                                     </a>
                                                 </div>
                                                 <div class="col">
-                                                    <a class="bg-light p-3 text-center d-block" href="#">
+                                                    <a class="bg-light  text-center d-block" href="#">
                                                         <i class="fe fe-plus font-20 text-primary"></i>
-                                                        <span class="d-block font-13 mt-2">Compose new</span>
+                                                        <span class="d-block font-13 ">Compose new</span>
                                                     </a>
                                                 </div>
                                             </div>
@@ -482,11 +482,25 @@
             <li>
                 <a class="has-arrow" href="javascript:void(0)" aria-expanded="false"><i class="bi bi-people"></i><span class="nav-title">Fournisseur</span> </a>
                 <ul aria-expanded="false">
-                    <li> <a href="listfournisseur">List Fournisseur</a> </li>
-                    <li> <a href='listAdmin'>List Fournisseur</a> </li>
+                    <li> <a href="{{ path('fournisseur_index') }}">List Fournisseur</a> </li>
+                    <li> <a href="{{ path('fournisseur_new') }}">Ajouter Fournisseur</a> </li>
+
+                   
                 </ul>
+                
             </li>
-            
+            <li>
+                <a class="has-arrow" href="javascript:void(0)" aria-expanded="false"><i class="bi bi-people"></i><span class="nav-title">Categorie</span> </a>
+                <ul aria-expanded="false">
+                    <li> <a href="{{ path('produit_categories_index') }}">List Categorie</a> </li>
+                    <li> <a href="{{ path('ajouter_categorie') }}''>Ajouter categorie</a> </li>
+                   
+
+                   
+                </ul>
+                
+            </li>
+           
             <li>
                 <a class="has-arrow" href="javascript:void(0)" aria-expanded="false"><i class="nav-icon ti ti-truck"></i><span class="nav-title">Livreur</span> </a>
                 <ul aria-expanded="false">
@@ -495,8 +509,25 @@
                 </ul>
             </li>
             <li><a href="listclient" aria-expanded="false"><i class="bi bi-people"></i><span class="nav-title">Client</span></a> </li>
-            <li><a href="listproduit" aria-expanded="false"><i class="bi bi-shop"></i><span class="nav-title">Produit</span></a> </li>
-            <li>
+           
+                <li>
+                    <a class="has-arrow" href="javascript:void(0)" aria-expanded="false"><i class="bi bi-people"></i><span class="nav-title">Produit</span> </a>
+                    <ul aria-expanded="false">
+                        
+                       
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('produit_index') }}">
+                                    Liste Produit
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('produit_new') }}">
+                                    Ajouter Produit
+                                </a>
+                            
+                       
+                    </ul>
+                </li>
                 <a href="listcolis" aria-expanded="false"><i class="bi bi-box"></i> <span class="nav-title">Colis</span></a>
             </li>
             <li><a href="affcom" aria-expanded="false"><i class="bi bi-command"></i><span class="nav-title">Commandes</span></a></li>           

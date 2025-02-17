@@ -39,7 +39,7 @@ security:
     access_control:
         - { path: ^/admin, roles: ROLE_ADMIN }
         - { path: ^/patient, roles: ROLE_PATIENT }
-        - { path: ^/psychiatre, roles: ROLE_PSY }
+        - { path: ^/psychiatre, roles: ROLE_PSYCHIATRE }
         - { path: ^/fournissur, roles: ROLE_FOURNISSEUR }
 when@test:
     security:

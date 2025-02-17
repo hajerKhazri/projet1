@@ -1,7 +1,28 @@
 {% extends 'basePatient.html.twig' %}
 
-{% block title %}Hello PatientController!{% endblock %}
+{% block title %}Nos produits{% endblock %}
 
 {% block body %}
-Patient Page
+<h1>Liste des Produits</h1>
+<div class="container">
+    <div class="row">
+        {% for produit in produits %}
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{{ produit.image }}" class="card-img-top" alt="Image du produit">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ produit.nom }}</h5>
+                        <p class="card-text">{{ produit.description }}</p>
+                        <p class="card-text"><strong>Prix : </strong>{{ produit.prix }} €</p>
+                        <a href="{{ path('commande_produit', { 'id': produit.id }) }}" class="btn btn-primary">Commander</a>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <p>Aucun produit disponible.</p>
+        {% endfor %}
+    </div>
+</div>
+        {% endfor %}
+    </div>
 {% endblock %}

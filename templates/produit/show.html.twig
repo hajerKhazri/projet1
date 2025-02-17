@@ -1,0 +1,11 @@
+<h1>Produit : {{ produit.nom }}</h1>
+<p><strong>Description :</strong> {{ produit.description }}</p>
+<p><strong>Prix :</strong> {{ produit.prix }} €</p>
+<p><strong>Disponible :</strong> {{ produit.disponible ? 'Oui' : 'Non' }}</p>
+
+<a href="{{ path('produit_index') }}" class="btn btn-secondary">Retour à la liste</a>
+<a href="{{ path('produit_edit', {'id': produit.id}) }}" class="btn btn-warning">Modifier</a>
+<form method="post" action="{{ path('produit_delete', {'id': produit.id}) }}" onsubmit="return confirm('Voulez-vous vraiment supprimer ce produit ?');" style="display:inline;">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ produit.id) }}">
+    <button type="submit" class="btn btn-danger">Supprimer</button>
+</form>

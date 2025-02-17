@@ -137,14 +137,8 @@
                         </div>
                         
                           <div class="newcss form-group">
-                            <label for="{{ registrationForm.roles.vars.id }}" class="form-label">Choisissez votre rôle</label>
-                            <select name="{{ registrationForm.roles.vars.full_name }}" id="{{ registrationForm.roles.vars.id }}" class="newcss">
-                                <option value="">Sélectionnez un rôle</option>
-                                <option class="list" value="ROLE_PATIENT">Patient</option>
-                                <option class="list" value="ROLE_PSYCHIATRE">Psychiatre</option>
-                                <option class="list" value="ROLE_FOURNISSEUR">Fournisseur</option>
-                            </select>
-                          
+                            <label>Choisissez votre rôle</label>
+                            {{ form_widget(registrationForm.roles, { 'attr': {'class': 'newcss'}}) }}
                         </div>
 
                         <div class="form-group">

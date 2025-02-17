@@ -1,0 +1,51 @@
+.table-title {
+    color: #333;
+    font-size: 20px;      /* taille réduite */
+    text-align: center;
+    margin-bottom: 10px;  /* marge inférieure réduite */
+}
+
+.btn-show {
+    background-color: green;
+    color: white;
+    padding: 3px 6px;     /* padding ajusté */
+    text-decoration: none;
+    border-radius: 3px;
+}
+
+.btn-edit {
+    background-color: red;
+    color: white;
+    padding: 3px 6px;     /* padding ajusté */
+    text-decoration: none;
+    border-radius: 3px;
+}
+
+.btn-create {
+    background-color: blue;
+    color: white;
+    padding: 3px 6px;     /* padding ajusté */
+    text-decoration: none;
+    border-radius: 3px;
+    display: inline-block;
+    margin-top: 10px;     /* marge supérieure réduite */
+}
+
+table {
+    width: 100%;          /* largeur augmentée pour occuper tout l'espace */
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 5px;         /* padding un peu augmenté pour une meilleure lisibilité */
+    text-align: left;
+}
+.error {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+}

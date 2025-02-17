@@ -12,6 +12,7 @@ use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class RegistrationFormType extends AbstractType
 {
@@ -35,8 +36,13 @@ class RegistrationFormType extends AbstractType
                     'Psychiatre' => 'ROLE_PSYCHIATRE',
                     'Fournisseur' => 'ROLE_FOURNISSEUR',
                 ],
-                'expanded' => false,
-                'multiple' => true, // Symfony attend un tableau pour les rôles
+                'expanded' => false, // Si vous voulez des boutons radio, mettez cela à true
+                'multiple' => true, // Permettre la sélection d'un seul rôle
+                'attr' => [
+                   'class' => 'newcss', // Optionnel: ajoute des classes CSS
+                 ],
+
+                 
             ])
             ->add('plainPassword', PasswordType::class, [
                 // instead of being set onto the object directly,
@@ -61,7 +67,7 @@ class RegistrationFormType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => User::class,
+            'data_class' => fournisseur::class,
         ]);
     }
 }
