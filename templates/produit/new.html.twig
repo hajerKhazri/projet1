@@ -8,10 +8,19 @@
         <h1 class="text-center mb-4">🆕 Ajouter un Produit</h1>
 
         <div class="card shadow-sm p-3"> <!-- Réduction du padding interne -->
-            {{ form_start(form) }}
-                <div class="mb-2">
+            {{ form_start(form, {
+                'attr': {
+                    'novalidate': 'novalidate',
+
+                }
+            }) }}
+
+            <div class="mb-2">
                     {{ form_label(form.nom, 'Nom') }}
                     {{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
+                {{ form_errors(form.nom)}}
+
+                ) }}
                 </div>
                 <div class="mb-2">
                     {{ form_label(form.description, 'Description') }}
@@ -25,6 +34,10 @@
                     {{ form_widget(form.disponible, {'attr': {'class': 'form-check-input'}}) }}
                     {{ form_label(form.disponible, 'Disponible', {'label_attr': {'class': 'form-check-label'}}) }}
                 </div>
+            <div class="mb-2">
+                {{ form_label(form.categorie, 'Catégorie') }}
+                {{ form_widget(form.categorie, {'attr': {'class': 'form-control'}}) }}
+            </div>
                 
                 <div class="d-flex justify-content-between mt-3"> <!-- Alignement plus compact des boutons -->
                     <a href="{{ path('produit_index') }}" class="btn btn-secondary">↩ Retour</a>

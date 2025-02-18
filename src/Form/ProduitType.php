@@ -3,6 +3,8 @@
 namespace App\Form;
 
 use App\Entity\Produit;
+use App\Entity\ProduitCategories;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -31,7 +33,13 @@ class ProduitType extends AbstractType
                 'label' => 'Disponible',
                 'required' => false,
                 'attr' => ['class' => 'form-check-input']
-            ]);
+            ])
+        ->add('categorie', EntityType::class, [
+            'class'=> ProduitCategories::class,
+            'choice_label' => 'nom',
+            'placeholder'=> 'choisir une categorie',
+        ])
+        ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void

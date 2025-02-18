@@ -9,10 +9,7 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Prix</th>
                 <th>Nom</th>
-                <th>Description</th>
-                <th>Image</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -20,16 +17,7 @@
             {% for produit_categorie in produit_categories %}
                 <tr>
                     <td>{{ produit_categorie.id }}</td>
-                    <td>{{ produit_categorie.prix }}</td>
                     <td>{{ produit_categorie.nom }}</td>
-                    <td>{{ produit_categorie.description }}</td>
-                    <td>
-                        {% if produit_categorie.image %}
-                            <img src="{{ asset('uploads/images/' ~ produit_categorie.image) }}" alt="Image de {{ produit_categorie.nom }}" width="100">
-                        {% else %}
-                            Aucune image
-                        {% endif %}
-                    </td>
                     <td>
                         <a href="{{ path('produit_categorie_show', {'id': produit_categorie.id}) }}">Voir</a>
                         <a href="{{ path('produit_categories_edit', {'id': produit_categorie.id}) }}">Modifier</a>
@@ -46,14 +34,9 @@
             {% endfor %}
         </tbody>
     </table>
-    <form method="POST" action="{{ path('ajouter_categorie') }}" enctype="multipart/form-data">
-        {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <button type="submit">Ajouter</button>
-        {{ form_end(form) }}
-    </form>
-    
-    
-    
-    
+
+
+
+
+
 {% endblock %}

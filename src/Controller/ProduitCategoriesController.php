@@ -23,8 +23,8 @@ class ProduitCategoriesController extends AbstractController
             'produit_categories' => $produitCategoriesRepository->findAll(),
         ]);
     }
-    #[Route('/ajouter-categorie', name: 'ajouter_categorie', methods: ['GET', 'POST'])]
 
+    #[Route('/ajouter-categorie', name: 'ajouter_categorie', methods: ['GET', 'POST'])]
     public function ajouterCategorie(Request $request, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
     {
         $categorie = new ProduitCategories();
@@ -32,26 +32,6 @@ class ProduitCategoriesController extends AbstractController
         $form->handleRequest($request);
     
         if ($form->isSubmitted() && $form->isValid()) {
-            /** @var UploadedFile $imageFile */
-            $imageFile = $form->get('image')->getData();
-            
-            if ($imageFile) {
-                $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
-                $safeFilename = $slugger->slug($originalFilename);
-                $newFilename = $safeFilename . '-' . uniqid() . '.' . $imageFile->guessExtension();
-    
-                try {
-                    $imageFile->move(
-                        $this->getParameter('uploads_directory'),
-                        $newFilename
-                    );
-                    $categorie->setImage($newFilename);
-                    $this->addFlash('success', 'Image uploadée avec succès.');
-                } catch (FileException $e) {
-                    $this->addFlash('error', 'Erreur lors de l\'upload de l\'image.');
-                }
-            }
-    
             $entityManager->persist($categorie);
             $entityManager->flush();
     
@@ -59,12 +39,12 @@ class ProduitCategoriesController extends AbstractController
             return $this->redirectToRoute('produit_categories_index');
         }
     
-        return $this->render('produit_categories/ajouter.html.twig', [
+        return $this->render('produit_categories/new.html.twig', [
             'form' => $form->createView(),
         ]);
     }
 
-    #[Route('/produit-categorie/{id}', name: 'produit_categorie_show', methods: ['GET'])]
+    #[Route('/produit-categorie/show/{id}', name: 'produit_categorie_show', methods: ['GET'])]
     public function show(int $id, ProduitCategoriesRepository $produitCategoriesRepository): Response
     {
         $produitCategorie = $produitCategoriesRepository->find($id);
@@ -78,32 +58,15 @@ class ProduitCategoriesController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'produit_categories_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, ProduitCategories $produitCategorie, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
+    #[Route('/produit-categorie/edit/{id}', name: 'produit_categories_edit', methods: ['GET', 'POST'])]
+    public function edit(Request $request, ProduitCategories $produitCategorie, EntityManagerInterface $entityManager): Response
     {
-        $form = $this->createForm(ProduitCategoriesType::class, $produitCategories);
+        $form = $this->createForm(ProduitCategoriesType::class, $produitCategorie);
         
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            /** @var UploadedFile $imageFile */
-            $imageFile = $form->get('image')->getData();
-            if ($imageFile) {
-                $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
-                $safeFilename = $slugger->slug($originalFilename);
-                $newFilename = $safeFilename . '-' . uniqid() . '.' . $imageFile->guessExtension();
 
-                try {
-                    $imageFile->move(
-                        $this->getParameter('uploads_directory'),
-                        $newFilename
-                    );
-                    $produitCategorie->setImage($newFilename);
-                    $this->addFlash('success', 'Image mise à jour avec succès.');
-                } catch (FileException $e) {
-                    $this->addFlash('error', 'Erreur lors de l\'upload de l\'image.');
-                }
-            }
 
             $entityManager->flush();
             $this->addFlash('success', 'Catégorie mise à jour avec succès !');
@@ -117,7 +80,7 @@ class ProduitCategoriesController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'produit_categories_delete', methods: ['POST'])]
+    #[Route('/produit-categorie/delete/{id}', name: 'produit_categories_delete', methods: ['POST'])]
     public function delete(Request $request, ProduitCategories $produitCategorie, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete' . $produitCategorie->getId(), $request->request->get('_token'))) {

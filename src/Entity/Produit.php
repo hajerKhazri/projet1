@@ -24,18 +24,28 @@ class Produit
     #[ORM\Column(type: "string", length: 255)]
     private $prix;
 
-    #[ORM\Column(type: "string", length: 255)]
+    #[ORM\Column(type: "boolean")]
     private $disponible;
 
-    public function getId(): ?string
+    #[ORM\ManyToOne]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?ProduitCategories $categorie = null;
+
+    public function getCategorie(): ?ProduitCategories
     {
-        return $this->id;
+        return $this->categorie;
     }
 
-    public function setId(string $id): self
+    public function setCategorie(?ProduitCategories $categorie): static
     {
-        $this->id = $id;
+        $this->categorie = $categorie;
+
         return $this;
+    }
+
+    public function getId(): ?int
+    {
+        return $this->id;
     }
 
     public function getNom(): ?string
@@ -43,9 +53,10 @@ class Produit
         return $this->nom;
     }
 
-    public function setNom(string $nom): self
+    public function setNom(string $nom): static
     {
         $this->nom = $nom;
+
         return $this;
     }
 
@@ -54,31 +65,35 @@ class Produit
         return $this->description;
     }
 
-    public function setDescription(string $description): self
+    public function setDescription(string $description): static
     {
         $this->description = $description;
+
         return $this;
     }
 
-    public function getPrix(): ?float
+    public function getPrix(): ?string
     {
         return $this->prix;
     }
 
-    public function setPrix(float $prix): self
+    public function setPrix(string $prix): static
     {
         $this->prix = $prix;
+
         return $this;
     }
 
-    public function getDisponible(): ?bool
+    public function isDisponible(): ?bool
     {
         return $this->disponible;
     }
 
-    public function setDisponible(bool $disponible): self
+    public function setDisponible(bool $disponible): static
     {
         $this->disponible = $disponible;
+
         return $this;
     }
+
 }

@@ -1,0 +1,67 @@
+{% extends 'basePatient.html.twig' %}
+
+{% block title %} Liste des produits - Mon Site {% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h1 class="mb-4">Nos produits</h1>
+
+        {# Barre de recherche et filtres #}
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <form action="{{ path('user_product_index') }}" method="GET">
+                    <div class="input-group">
+                        <input type="text" name="search" class="form-control" placeholder="Rechercher un produit..." value="{{ app.request.query.get('search') }}">
+                        <button type="submit" class="btn btn-primary">Rechercher</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-6">
+                <form action="{{ path('user_product_index') }}" method="GET">
+                    <div class="input-group">
+                        <select name="category" class="form-select">
+                            <option value="">Toutes les catégories</option>
+                            {% for category in categories %}
+                                <option value="{{ category.id }}" {{ app.request.query.get('category') == category.id ? 'selected' : '' }}>
+
+
+                                    {{ category.name }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                        <button type="submit" class="btn btn-secondary">Filtrer</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        {# Liste des produits #}
+        <div class="row">
+            {% for produit in produits %}
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        {# Image du produit #}
+                        <img src="{{ produit.image }}" class="card-img-top" alt="{{ produit.nom }}" style="height: 200px; object-fit: cover;">
+
+                        {# Corps de la carte #}
+                        <div class="card-body">
+                            <h5 class="card-title">{{ produit.nom }}</h5>
+                            <p class="card-text">{{ produit.description|slice(0, 100) }}...</p>
+                            <p class="text-success fw-bold">{{ produit.prix }} €</p>
+                            <a href="{{ path('user_product_show', {id: produit.id}) }}" class="btn btn-primary">Voir les détails</a>
+                        </div>
+                    </div>
+                </div>
+            {% else %}
+                <div class="col-12">
+                    <p class="text-center">Aucun produit trouvé.</p>
+                </div>
+            {% endfor %}
+        </div>
+
+        {# Pagination #}
+        <div class="d-flex justify-content-center mt-4">
+            {{ knp_pagination_render(produits) }}
+        </div>
+    </div>
+{% endblock %}

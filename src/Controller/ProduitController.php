@@ -48,10 +48,10 @@ final class ProduitController extends AbstractController
 
     #[Route('produit/{id}', name: 'produit_show', methods: ['GET'])]
       public function show(Produit $produit): Response    {
-        $produit = $entityManager->getRepository(Produit::class)->find($id);
-
-        if (!$produit) {
-            throw $this->createNotFoundException('Produit non trouvé.');
+        {
+            return $this->render('produit/show.html.twig', [
+                'produit' => $produit,
+            ]);
         }
 
         return $this->render('produit/show.html.twig', [

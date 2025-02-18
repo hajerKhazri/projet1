@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20250213085959 extends AbstractMigration
+final class Version20250217190811 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -22,9 +22,10 @@ final class Version20250213085959 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->addSql('CREATE TABLE commande (id INT AUTO_INCREMENT NOT NULL, specialite VARCHAR(255) NOT NULL, liste_patient LONGTEXT NOT NULL COMMENT \'(DC2Type:array)\', PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE consultation (id INT AUTO_INCREMENT NOT NULL, patient_id INT DEFAULT NULL, psychiatre_id INT DEFAULT NULL, r_dv_id INT DEFAULT NULL, date DATE NOT NULL, heure TIME NOT NULL, status VARCHAR(255) NOT NULL, traitement VARCHAR(255) NOT NULL, INDEX IDX_964685A66B899279 (patient_id), INDEX IDX_964685A6DA6C8211 (psychiatre_id), INDEX IDX_964685A6A0A596B1 (r_dv_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
-        $this->addSql('CREATE TABLE fournisseur (id INT NOT NULL, etat TINYINT(1) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE fournisseur (id INT AUTO_INCREMENT NOT NULL, specialite VARCHAR(255) NOT NULL, list_des_patients VARCHAR(255) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE patient (id INT NOT NULL, dossier_medical VARCHAR(255) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE produit (id INT AUTO_INCREMENT NOT NULL, nom VARCHAR(255) NOT NULL, description VARCHAR(255) NOT NULL, prix VARCHAR(255) NOT NULL, disponible VARCHAR(255) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE produit_categories (id INT AUTO_INCREMENT NOT NULL, nom VARCHAR(255) NOT NULL, description LONGTEXT DEFAULT NULL, prix NUMERIC(10, 2) NOT NULL, image VARCHAR(255) DEFAULT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE psychiatre (id INT NOT NULL, specialite VARCHAR(255) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE rdv (id INT AUTO_INCREMENT NOT NULL, patient_id INT DEFAULT NULL, psychiatre_id INT DEFAULT NULL, dateheure DATETIME NOT NULL, status VARCHAR(255) NOT NULL, INDEX IDX_10C31F866B899279 (patient_id), INDEX IDX_10C31F86DA6C8211 (psychiatre_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE reset_password_request (id INT AUTO_INCREMENT NOT NULL, user_id INT NOT NULL, selector VARCHAR(20) NOT NULL, hashed_token VARCHAR(100) NOT NULL, requested_at DATETIME NOT NULL COMMENT \'(DC2Type:datetime_immutable)\', expires_at DATETIME NOT NULL COMMENT \'(DC2Type:datetime_immutable)\', INDEX IDX_7CE748AA76ED395 (user_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
@@ -33,7 +34,6 @@ final class Version20250213085959 extends AbstractMigration
         $this->addSql('ALTER TABLE consultation ADD CONSTRAINT FK_964685A66B899279 FOREIGN KEY (patient_id) REFERENCES patient (id)');
         $this->addSql('ALTER TABLE consultation ADD CONSTRAINT FK_964685A6DA6C8211 FOREIGN KEY (psychiatre_id) REFERENCES psychiatre (id)');
         $this->addSql('ALTER TABLE consultation ADD CONSTRAINT FK_964685A6A0A596B1 FOREIGN KEY (r_dv_id) REFERENCES rdv (id)');
-        $this->addSql('ALTER TABLE fournisseur ADD CONSTRAINT FK_369ECA32BF396750 FOREIGN KEY (id) REFERENCES user (id) ON DELETE CASCADE');
         $this->addSql('ALTER TABLE patient ADD CONSTRAINT FK_1ADAD7EBBF396750 FOREIGN KEY (id) REFERENCES user (id) ON DELETE CASCADE');
         $this->addSql('ALTER TABLE psychiatre ADD CONSTRAINT FK_559A887FBF396750 FOREIGN KEY (id) REFERENCES user (id) ON DELETE CASCADE');
         $this->addSql('ALTER TABLE rdv ADD CONSTRAINT FK_10C31F866B899279 FOREIGN KEY (patient_id) REFERENCES patient (id)');
@@ -47,7 +47,6 @@ final class Version20250213085959 extends AbstractMigration
         $this->addSql('ALTER TABLE consultation DROP FOREIGN KEY FK_964685A66B899279');
         $this->addSql('ALTER TABLE consultation DROP FOREIGN KEY FK_964685A6DA6C8211');
         $this->addSql('ALTER TABLE consultation DROP FOREIGN KEY FK_964685A6A0A596B1');
-        $this->addSql('ALTER TABLE fournisseur DROP FOREIGN KEY FK_369ECA32BF396750');
         $this->addSql('ALTER TABLE patient DROP FOREIGN KEY FK_1ADAD7EBBF396750');
         $this->addSql('ALTER TABLE psychiatre DROP FOREIGN KEY FK_559A887FBF396750');
         $this->addSql('ALTER TABLE rdv DROP FOREIGN KEY FK_10C31F866B899279');
@@ -58,6 +57,7 @@ final class Version20250213085959 extends AbstractMigration
         $this->addSql('DROP TABLE fournisseur');
         $this->addSql('DROP TABLE patient');
         $this->addSql('DROP TABLE produit');
+        $this->addSql('DROP TABLE produit_categories');
         $this->addSql('DROP TABLE psychiatre');
         $this->addSql('DROP TABLE rdv');
         $this->addSql('DROP TABLE reset_password_request');

@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'base.html.twig.' %}
 
 {% block title %}Liste des produits{% endblock %}
 
@@ -64,6 +64,7 @@
                                             <th>Description</th>
                                             <th>Prix</th>
                                             <th>Disponible</th>
+                                            <th>Catégorie</th>
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
@@ -75,6 +76,7 @@
                                                 <td>{{ produit.description }}</td>
                                                 <td>{{ produit.prix }}</td>
                                                 <td>{{ produit.disponible ? 'Oui' : 'Non' }}</td>
+                                                <td>{{ produit.categorie.id ()}}</td>
                                                 <td>
                                                     <a href="{{ path('produit_show', {'id': produit.id}) }}" class="btn btn-info btn-sm">Voir</a>
                                                     <a href="{{ path('produit_edit', {'id': produit.id}) }}" class="btn btn-warning btn-sm">Éditer</a>

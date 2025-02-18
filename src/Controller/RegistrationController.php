@@ -87,36 +87,4 @@ class RegistrationController extends AbstractController
             'agreeTerms' => $form->get('agreeTerms')->createView(),
         ]);
     }
-    #[Route('/register', name: 'app_register')]
-    public function registerFournisseur(Request $request, UserPasswordHasherInterface $userPasswordHasher, Security $security, EntityManagerInterface $entityManager): Response
-    {
-        $user = new Fournisseur();
-        $form = $this->createForm(RegistrationFormType::class, $user);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            /** @var string $plainPassword */
-            $plainPassword = $form->get('plainPassword')->getData();
-
-            $user->setEtat('true');
-            // encode the plain password
-            $user->setPassword($userPasswordHasher->hashPassword($user, $plainPassword));
-
-            $entityManager->persist($user);
-            $entityManager->flush();
-
-            // do anything else you need here, like send an email
-
-            return $security->login($user, SecurityAuthenticator::class, 'main');
-        }
-
-        return $this->render('registration/register.html.twig', [
-            'registrationForm' => $form,
-            'firstName' => $form->get('firstName')->createView(),
-            'lastName' => $form->get('lastName')->createView(),
-            'email' => $form->get('email')->createView(),
-            'plainPassword' => $form->get('plainPassword')->createView(),
-            'agreeTerms' => $form->get('agreeTerms')->createView(),
-        ]);
     }
-}
